@@ -1,5 +1,36 @@
 # inventori
 
+## Tugas 8
+
+### 1. Jelaskan perbedaan antara Navigator.push() dan Navigator.pushReplacement(), disertai dengan contoh mengenai penggunaan kedua metode tersebut yang tepat!
+Perbedaan antara method push dan pushReplacement terletak pada manipulasi stack navigasinya, navigator.push() menambahkan sebuah page route ke dalam stack sebagai halaman baru, sehingga dapat kembali ke halaman sebelumnya dengan menggunakan tombol back atau Navigator.pop(), sedangkan Navigator.pushReplacement() mengganti stack halaman yang sedang ditampilkan menjadi halaman baru, sehingga jika navigation stack dilakukan pop, tidak akan bisa kembali ke halaman sebelumnya karena halaman tersebut telah digantikan dengan halaman yang baru. Contoh penggunaan Navigator.push() adalah memunculkan form untuk membuah sebuah produk sehingga bisa kembali ke layar utama, sedangkan Navigator.pushReplacement() dapat digunakan untuk menggantikan halaman setelah login dengan halaman utama, sehingga user tidak dapat kembali ke halaman login page
+
+### 2. Jelaskan masing-masing layout widget pada Flutter dan konteks penggunaannya masing-masing!
+1) Container Widget: digunakan sebagai wadah untuk menempatkan dan mengatur widget lainnya seperti Text, Image, dll.
+2) Row Widget: Digunakan untuk mengatur widget secara horizontal.
+3) Column Widget: digunakan untuk mengatur widget secara vertikal.
+4) Stack Widget: Mengatur widget dalam tumpukan, dapat digunakan untuk membuat tata letak yang kompleks
+5) Expanded & Flexible Widget: Expanded dan Flexible digunakan dalam Row atau Column untuk mengatur bagaimana child akan mengisi ruang yang tersedia. 
+6) ListView & GridView Widget: ListView dan GridView digunakan untuk menampilkan daftar item dalam bentuk daftar linier (vertikal atau horizontal) atau grid (dalam bentuk baris dan kolom).
+7) Wrap Widget: Digunakan untuk mengatur widget dalam baris atau kolom, jika tidak cukup ruang, maka akan dilompatkan ke baris atau kolom berikutnya/
+
+### 3. Sebutkan apa saja elemen input pada form yang kamu pakai pada tugas kali ini dan jelaskan mengapa kamu menggunakan elemen input tersebut!
+Elemen input pada form yang digunakan adalah TextFormField, widget tersebut digunakan karena sudah tersedia di material.dart, widget ini dapat menerima input dari user dan dapat melakukan validasi yang sudah disesuaikan untuk digunakan dalam form.
+
+### 4. Bagaimana penerapan clean architecture pada aplikasi Flutter?
+Clean Architecture pada Flutter merupakan sebuah prinsip software design yang digunakan untuk memisahkan kode menjadi lebih modular, scalable, dan testable codebase.
+
+Dalam konteks flutter, terdapat layer:
+
+1) Presentation Layer (UI): Layer ini mengandung user interface, seperti widgets, screens, dan views. Layer ini bertanggung jawab dalam menangani interaksi dengan user dan melakukan render pada UI.
+2) Domain Layer (Business Logic): Domain layer merepresentasikan inti dari logika bisnis dari sebuah aplikasi, layer ini berisi use cases, entities, dan business rules.
+3) Data Layer: Data layer bertanggung jawab atas penerimaan data dan penyimpanan, layer ini terdiri dari repositories dan data sources.
+
+### 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step! (bukan hanya sekadar mengikuti tutorial)
+Pertama saya membuat class leftDrawer pada file `left_drawer.dart` yang memiliki button untuk ke halaman utama, dan tambah produk yang nantinya akan ditambahkan fungsi navigator.push() ketika tombol itu ditekan sehingga akan pindah halaman, lalu leftDrawer tersebut akan dipasang ke menu dan halaman form pada atribut drawer di Scaffold. Setelah itu, saya membuat file baru `shoplist_form.dart` yang berisi class stateful yang akan menerima input dari user dengan menggunakan TextFormField yang juga akan dilakukan validasi ketika tombol save ditekan, apabila berhasil akan dimunculkan popup yang memperlihatkan detail atribut dari item tersebut. Setelah itu akan dilakukan refactoring file dengan memindahkan halaman-halaman ke folder screens.
+
+Untuk bonus, saya membuat file baru bernama `show_item.dart` yang berisi class Item dengan atribut name, amount, description yang menyimpan List yang berisi Item, lalu dari shoplist_form.dart form tersebut saya modifikasi untuk setiap menekan tombol save, akan dibuat sebuah objek item baru yang akan disimpan ke listItem yang nantinya akan di display pada halaman lihat item, setelah itu akan ditambahkan navigasi ke halaman ShowItemPage pada drawer dan tombol halaman utama.
+
 ## Tugas 7
 
 ### 1. Apa perbedaan utama antara stateless dan stateful widget dalam konteks pengembangan aplikasi Flutter?
