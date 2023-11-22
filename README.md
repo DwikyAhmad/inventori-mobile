@@ -1,5 +1,27 @@
 # inventori
 
+## Tugas 9
+
+### 1. Apakah bisa kita melakukan pengambilan data JSON tanpa membuat model terlebih dahulu? Jika iya, apakah hal tersebut lebih baik daripada membuat model sebelum melakukan pengambilan data JSON?
+Ya, kita bisa mengambil JSON tanpa membuat model, kita bisa memasukkan data-data JSON ke dalam map. Namun, hal itu kurang efektif karena pengambilan data dan melakukan assign pada data menjadi lebih sulit, sehingga lebih baik  membuat model terlebih dahulu agar kita dapat mengetahui jenis data apa yang mau diambil.
+
+### 2. Jelaskan fungsi dari CookieRequest dan jelaskan mengapa instance CookieRequest perlu untuk dibagikan ke semua komponen di aplikasi Flutter.
+CookieRequest digunakan untuk melakukan handling http request dengan autentikasi berbasis cookie dan mengatur cookie user session, CookieRequest ini akan dibagikan ke seluruh widget menggunakan provider agar dapat digunakan cookies tersebut pada widget lainnya.
+
+### 3. Jelaskan mekanisme pengambilan data dari JSON hingga dapat ditampilkan pada Flutter.
+Pertama, akan dibuat sebuah model Item pada flutter, lalu akan dilakukan sebuah request pada web service django yang akan memberikan data item dalam bentuk JSON, setelah itu model akan digunakan untuk membuat instance dari item dan masing-masing dari item tersebut akan ditampilkan pada halaman di flutter.
+
+### 4. Jelaskan mekanisme autentikasi dari input data akun pada Flutter ke Django hingga selesainya proses autentikasi oleh Django dan tampilnya menu pada Flutter.
+Pada halaman LoginPage, akan diberikan sebuah form yang menerima input data berupa username dan password, username dan password tersebut akan dikirimkan melalui POST request ke url aplikasi authentication pada web service django, dari views.py pada aplikasi authentication akan dilakukan autentikasi dan dikirimkan response berupa JSON yang mengindikasikan autentikasi berhasil atau tidak, jika berhasil maka akan dipindahkan ke halaman menu
+
+### 5. Sebutkan seluruh widget yang kamu pakai pada tugas ini dan jelaskan fungsinya masing-masing.
+- TextField Widget: widget ini digunakan untuk menerima input username dan password untuk melakukan autentikasi
+- ElevatedButton Widget: widget digunakan untuk melakukan submission pada proses autentikasi dan saat melakukan integrasi create item dengan django
+- SizedBox Widget: Widget digunakan untuk memberikan ruang pemisah antar elemen, digunakan untuk memberikan jarak  antara widget TextField username dan password
+
+### 6. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step! (bukan hanya sekadar mengikuti tutorial).
+Pertama-tama saya membuat aplikasi authentication pada aplikasi django, lalu menambahkan views.py yang berisi function dengan decorator @csrf_exempt untuk melakukan login dan logout yang memberikan response JSON untuk digunakan pada integrasi dengan aplikasi Flutter, lalu pada aplikasi flutter akan dibuat sebuah halaman login page yang akan ditampilkan pada awal dijalannya aplikasi untuk user melakukan autentikasi dan bisa masuk ke menu, lalu akan dibuat sebuah model item yang akan digunakan untuk melakukan fetch data dari web service django. Setelah itu tombol lihat item akan diberikan fungsionalitas untuk menampilkan masing-masing data yang diberikan dari response web django, tombol logout akan diberikan fungsionalitas untuk melakukan logout dengan menggunakan views logout yang ada di aplikasi django pada aplikasi authentication. Untuk melakukan fungsionalitas tersebut ada beberapa dependecy yang diperlukan seperti django-cors-headers, provider, pbp_django_auth, dan http.
+
 ## Tugas 8
 
 ### 1. Jelaskan perbedaan antara Navigator.push() dan Navigator.pushReplacement(), disertai dengan contoh mengenai penggunaan kedua metode tersebut yang tepat!
